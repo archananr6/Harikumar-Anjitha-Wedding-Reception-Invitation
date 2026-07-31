@@ -506,14 +506,8 @@
       text-decoration: none; display: flex; align-items: center; gap: 4px; z-index: 2;
     }
 
-@media (max-width: 400px), (max-height: 700px) {
-  .cover { gap: 14px; padding: 4vh 16px 22px; }
-  .cover-bouquet { width: 54px; }
-  .cover-names { font-size: clamp(2rem, 9vw, 2.8rem); margin-bottom: 0; }
-  .envelope-3d-wrap { height: 190px; }
-  #envelope-3d-container { height: 155px; }
-  .cover-actions { gap: 14px; margin-top: 0; }
-  .cover-action .icon-circle { width: 42px; height: 42px; }
+@media (max-width: 380px) {
+  .cover-names { font-size: clamp(1.5rem, 9vw, 2.4rem); gap: .08em; }
 }
 
     /* ================= countdown ================= */
@@ -681,21 +675,33 @@
     }
 
     .cover-names {
-      display: flex; justify-content: center; align-items: baseline; gap: .16em;
-      font-family: 'Libertinus Serif', serif;
-      font-size: clamp(2.6rem, 7vw, 3.6rem);
-      color: var(--blush);
-      line-height: 1.15; margin-bottom: 4px;
-      text-shadow: 0 0 16px rgba(243,168,196,.35);
-    }
-    .cover-names .amp { font-size: .72em; color: var(--gold); }
+  display: flex; justify-content: center; align-items: baseline; gap: .12em;
+  flex-wrap: wrap;                              /* NEW: allow wrap instead of overflow */
+  font-family: 'Libertinus Serif', serif;
+  font-size: clamp(1.7rem, 8.5vw, 3.2rem);       /* was clamp(2.6rem, 9vw, 3.6rem) — too big */
+  line-height: 1.15;
+  color: var(--blush);
+  max-width: 100%;
+  padding: 0 10px;
+  word-break: keep-all;
+  text-shadow: 0 0 16px rgba(243,168,196,.35);
+}
+.cover-names .amp { font-size: .72em; color: var(--gold); }
 
     .envelope-3d-wrap {
-      position: relative; width: min(88vw, 340px); height: 240px; margin: 0 auto;
-      cursor: pointer; -webkit-tap-highlight-color: transparent;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-    }
-    #envelope-3d-container { width: 100%; height: 200px; position: relative; }
+  position: relative;
+  width: min(80vw, 300px);
+  height: 220px;
+  margin: 0 auto;
+  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+    #envelope-3d-container {
+  width: 100%;
+  height: 180px;
+  min-width: 240px;     /* NEW: guarantees a sane aspect ratio even mid-layout */
+  position: relative;
+}
     #envelope-3d-container canvas { width: 100% !important; height: 100% !important; outline: none; display: block; }
 
     .envelope-hint {
